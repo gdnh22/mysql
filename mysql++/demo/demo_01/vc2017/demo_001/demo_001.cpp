@@ -39,16 +39,32 @@ int main(int argc, char* argv[])
 		原文：https ://blog.csdn.net/lee353086/article/details/89183652 
 	版权声明：本文为博主原创文章，转载请附上博文链接！
 	*/
-    std::cout << "Hello mysql++!\n";
+    std::cout << "Hello mysql++ demo 001 !\n";
 	mysqlpp::Connection conn(false);
-	constexpr auto db_name = "error_name";
-	constexpr auto server_name = "error_name";
-	constexpr auto user_name = "error_name";
-	constexpr auto password = "error_name";
-
+	constexpr auto db_name = "hyibox";
+	constexpr auto server_name = "212.64.109.40";
+	constexpr auto user_name = "hiynn";
+	constexpr auto password = "1111";
+	constexpr auto sql_string_algorithm_config = "select * from ALGORITHM_CONFIG";
 	if (conn.connect(db_name, server_name, user_name, password))
 	{
 		std::cout << "connection succuss." << std::endl;
+		mysqlpp::Query query = conn.query(sql_string_algorithm_config);
+		if (mysqlpp::StoreQueryResult res = query.store() ){
+			std::cout << "We have:" << std::endl;
+			//mysqlpp::StoreQueryResult::const_iterator it;
+			for (auto it=res.begin(); it!=res.end(); ++it)
+			{
+				int iIndex = 0;
+				mysqlpp::Row row = *it;
+				std::cout << '\t' << row[iIndex++];
+				std::cout << '\t' << row[iIndex++];
+				std::cout << '\t' << row[iIndex++] << std::endl;
+			}
+		}
+		else {
+			std::cerr << "Failed to get ALGORITHM_CONFIG" << query.error() << std::endl;
+		}
 	}
 	else
 	{
