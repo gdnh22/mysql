@@ -46,6 +46,7 @@
     <IntDir>$(SolutionDir)$(Configuration)\mysqlpp\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
+    <TargetName>mysqlpp_vc2017D</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -81,13 +82,14 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>wsock32.lib;libmysql.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(SolutionDir)$(Configuration)\mysqlpp_d.dll</OutputFile>
-      <ImportLibrary>$(SolutionDir)$(Configuration)\mysqlpp_d.lib</ImportLibrary>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>H:\github_gdnh22\mysql.git\mysql++\for_vs2017\mysql_lib\x86\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(SolutionDir)$(Configuration)\mysqlpp_d.pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <TargetMachine>MachineX86</TargetMachine>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
     </Link>
     <Bscmake>
       <OutputFile>$(SolutionDir)$(Configuration)\mysql++_mysqlpp.bsc</OutputFile>
