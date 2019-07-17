@@ -9,7 +9,7 @@
 #include "mysql.h"
 #include ".\\include\\v3.2.4\\mysql++.h"
 #ifdef _DEBUG
-#pragma comment(lib,".\\lib\\mysqlpp_d.lib")
+#pragma comment(lib,".\\lib\\mysqlpp.lib")
 #else
 #pragma comment(lib,"mysqlpp.lib")
 #endif
