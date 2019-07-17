@@ -1,4 +1,4 @@
-/// \file exceptions.h
+﻿/// \file exceptions.h
 /// \brief Declares the MySQL++-specific exception classes.
 ///
 /// When exceptions are enabled for a given mysqlpp::OptionalExceptions
@@ -30,6 +30,7 @@
 
 #if !defined(MYSQLPP_EXCEPTIONS_H)
 #define MYSQLPP_EXCEPTIONS_H
+#pragma warning(disable:4275)
 
 #include "options.h"
 
@@ -46,7 +47,8 @@ class MYSQLPP_EXPORT Exception : public std::exception
 {
 public:
 	/// \brief Create exception object as copy of another
-	Exception(const Exception& e) MAY_THROW() :
+	Exception(const Exception& e) :
+	//Exception(const Exception& e) MAY_THROW() :	//comment by wangfeng，2019-07-17 15:12:43
 	std::exception(e),
 	what_(e.what_)
 	{
