@@ -13,10 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="mysqlpp">
+      <UniqueIdentifier>{7f7ec085-0728-4648-a06e-949787bef746}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\v3.2.4\mysql++.h">
+      <Filter>mysqlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\v3.2.4\connection.h">
+      <Filter>mysqlpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\v3.2.4\exceptions.h">
+      <Filter>mysqlpp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

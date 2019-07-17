@@ -9,7 +9,28 @@
 
 int main()
 {
+	/*
+/*
+				VS2017下__cplusplus宏为199711L的问题
+				发现需要在project属性页下面位置中做设置
+				[Configuration Properties]->[C/C++]->[Command Line]->[Additional Options]
+				加入下面参数
+				/Zc:__cplusplus
+				参考资料
+				[1]《MSVC now correctly reports __cplusplus》
+				https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/
+				[2]《/Zc: __cplusplus （启用更新的 __cplusplus 宏）》
+				https://docs.microsoft.com/zh-cn/cpp/build/reference/zc-cplusplus?view=vs-2017
 
+				C++03：__cplusplus = 199711L
+				C++11：__cplusplus = 201103L
+				C++14：__cplusplus = 201402L   （VC2017默认值）
+	-------------------- -
+		作者：kagula086
+		来源：CSDN
+		原文：https ://blog.csdn.net/lee353086/article/details/89183652 
+	版权声明：本文为博主原创文章，转载请附上博文链接！
+	*/
     std::cout << "Hello mysql++!\n"; 
 }
 

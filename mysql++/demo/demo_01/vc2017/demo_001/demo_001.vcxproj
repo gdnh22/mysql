@@ -93,6 +93,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>C:\Program Files\MySQL\MySQL Connector C 6.1\include;$(SolutionDir)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,6 +155,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\v3.2.4\connection.h" />
+    <ClInclude Include="..\include\v3.2.4\exceptions.h" />
+    <ClInclude Include="..\include\v3.2.4\mysql++.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

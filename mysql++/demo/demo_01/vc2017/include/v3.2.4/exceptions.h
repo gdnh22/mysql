@@ -1,4 +1,4 @@
-/// \file exceptions.h
+﻿/// \file exceptions.h
 /// \brief Declares the MySQL++-specific exception classes.
 ///
 /// When exceptions are enabled for a given mysqlpp::OptionalExceptions
