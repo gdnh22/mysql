@@ -6,12 +6,13 @@
 #include <string.h>
 #include <iomanip>
 
-#include "mysql.h"
+#include ".\\include\\mysql_lib\\x86\\include\\mysql.h"
 #include ".\\include\\v3.2.4\\mysql++.h"
+
 #ifdef _DEBUG
 #pragma comment(lib,".\\lib\\mysqlpp_vc2017D.lib")
 #else
-#pragma comment(lib,"mysqlpp.lib")
+#pragma comment(lib,".\\lib\\mysqlpp_vc2017.lib")
 #endif
 
 int main(int argc, char* argv[])

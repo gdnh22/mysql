@@ -1,4 +1,4 @@
-/// \file common.h
+﻿/// \file common.h
 /// \brief This file includes top-level definitions for use both
 /// internal to the library, and outside it.  Contrast mysql++.h
 ///
@@ -216,7 +216,9 @@ typedef unsigned long ulong;
 #if defined(MYSQLPP_MYSQL_HEADERS_BURIED)
 #	include <mysql/mysql.h>
 #else
-#	include <mysql.h>
+//#	include <mysql.h>
+
+#include ".\\include\\mysql_lib\\x86\\include\\mysql.h"	//by wangfeng，2019-07-17 16:19:56
 #endif
 
 // The Unicode chapter of the user manual justifies the following.
