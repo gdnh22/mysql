@@ -3,11 +3,18 @@
 
 #include "pch.h"
 #include <iostream>
+#include <string.h>
+#include <iomanip>
 
 #include "mysql.h"
 #include ".\\include\\v3.2.4\\mysql++.h"
+#ifdef _DEBUG
+#pragma comment(lib,".\\lib\\mysqlpp_d.lib")
+#else
+#pragma comment(lib,"mysqlpp.lib")
+#endif
 
-int main()
+int main(int argc, char* argv[])
 {
 	/*
 /*
@@ -31,7 +38,22 @@ int main()
 		原文：https ://blog.csdn.net/lee353086/article/details/89183652 
 	版权声明：本文为博主原创文章，转载请附上博文链接！
 	*/
-    std::cout << "Hello mysql++!\n"; 
+    std::cout << "Hello mysql++!\n";
+	mysqlpp::Connection conn(false);
+	constexpr auto db_name = "error_name";
+	constexpr auto server_name = "error_name";
+	constexpr auto user_name = "error_name";
+	constexpr auto password = "error_name";
+
+	if (conn.connect(db_name, server_name, user_name, password))
+	{
+		std::cout << "connection succuss." << std::endl;
+	}
+	else
+	{
+		std::cerr << "mysql++ connection failed: " << conn.error() << std::endl;
+	}
+	char c = 0;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
