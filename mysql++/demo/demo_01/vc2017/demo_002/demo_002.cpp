@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string.h>
 #include <iomanip>
+#include <codecvt>
 
 #include ".\\include\\mysql_lib\\x86\\include\\mysql.h"
 #include ".\\include\\v3.2.4\\mysql++.h"
@@ -39,7 +40,7 @@ int main(int argc, char* argv[])
 		原文：https ://blog.csdn.net/lee353086/article/details/89183652
 	版权声明：本文为博主原创文章，转载请附上博文链接！
 	*/
-	std::cout << "Hello mysql++ demo 002 ! utf8 中文\n";
+	std::cout << "Hello mysql++ demo 002 ! utf8 中文乱码：utf8->unicode->ansi\n";
 	mysqlpp::Connection conn(false);
 	conn.set_option(new mysqlpp::SetCharsetNameOption("utf8"));	//解决乱码。失败。需要设置控制台：CHCP 65001
 	//conn.set_option(new mysqlpp::SetCharsetNameOption("gb2312"));	//中文解决。
@@ -64,7 +65,16 @@ int main(int argc, char* argv[])
 				int iIndex = 0;
 				mysqlpp::Row row = *it;
 				std::cout << '\t' << row[iIndex++];
-				std::cout << '\t' << row[iIndex++];
+				std::string strUTF8_NAME = row[iIndex++].c_str();
+
+				std::wstring_convert<std::codecvt_utf8<wchar_t>> utf8_unicode;	//utf8 -> unicode
+				std::wstring strUNICODE = utf8_unicode.from_bytes(strUTF8_NAME);
+
+				std::wstring_convert<std::codecvt<wchar_t, char, mbstate_t>> convert_unicode_gbk(new std::codecvt<wchar_t, char, mbstate_t>("CHS"));   // unicode -> gbk
+				std::string strGB2312_NAME = convert_unicode_gbk.to_bytes(strUNICODE.c_str());	//
+
+				//utf8 -> unicode
+				std::cout << '\t' << strGB2312_NAME.c_str();
 				std::cout << '\t' << row[iIndex++] << std::endl;
 			}
 		}
