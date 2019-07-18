@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 	constexpr auto db_name = "hyibox";
 	constexpr auto server_name = "212.64.109.40";
 	constexpr auto user_name = "hiynn";
-	constexpr auto password = "1111";
+	constexpr auto password = "1111222";
 	constexpr auto sql_string_algorithm_config = "select * from ALGORITHM_CONFIG";
 	if (conn.connect(db_name, server_name, user_name, password))
 	{
