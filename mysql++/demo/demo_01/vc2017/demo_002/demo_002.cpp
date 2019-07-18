@@ -41,6 +41,8 @@ int main(int argc, char* argv[])
 	*/
 	std::cout << "Hello mysql++ demo 002 ! utf8 中文\n";
 	mysqlpp::Connection conn(false);
+	//conn.set_option(new mysqlpp::SetCharsetNameOption("utf8"));	//试，解决乱码。失败。
+	conn.set_option(new mysqlpp::SetCharsetNameOption("gb2312"));	//中文解决。
 	constexpr auto db_name = "hyibox";
 	constexpr auto server_name = "212.64.109.40";
 	constexpr auto user_name = "hiynn";
@@ -49,6 +51,10 @@ int main(int argc, char* argv[])
 	if (conn.connect(db_name, server_name, user_name, password))
 	{
 		std::cout << "connection succuss." << std::endl;
+		/*mysqlpp::Query query_utf8 = conn.query();
+		query_utf8 << "SET NAMES 'utf8'";
+		query_utf8.execute(); 失败，乱码*/
+
 		mysqlpp::Query query = conn.query(sql_string_algorithm_config);
 		if (mysqlpp::StoreQueryResult res = query.store()) {
 			std::cout << "We have:" << std::endl;
