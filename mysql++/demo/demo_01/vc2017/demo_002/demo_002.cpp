@@ -41,8 +41,8 @@ int main(int argc, char* argv[])
 	*/
 	std::cout << "Hello mysql++ demo 002 ! utf8 中文\n";
 	mysqlpp::Connection conn(false);
-	//conn.set_option(new mysqlpp::SetCharsetNameOption("utf8"));	//试，解决乱码。失败。
-	conn.set_option(new mysqlpp::SetCharsetNameOption("gb2312"));	//中文解决。
+	conn.set_option(new mysqlpp::SetCharsetNameOption("utf8"));	//解决乱码。失败。需要设置控制台：CHCP 65001
+	//conn.set_option(new mysqlpp::SetCharsetNameOption("gb2312"));	//中文解决。
 	constexpr auto db_name = "hyibox";
 	constexpr auto server_name = "212.64.109.40";
 	constexpr auto user_name = "hiynn";
