@@ -42,7 +42,11 @@ namespace mysqlpp {
 /// of instantiation, where it is accessible.
 
 template <typename ConnInfoT>
-class TooOld : std::unary_function<ConnInfoT, bool>
+#if __cplusplus < 201703L
+class TooOld : std::unary_function<ConnInfoT, bool> 
+#else
+class TooOld    //C++17移除了一些方法unary_function， by wangfeng,2019-08-02 16:34:21
+#endif
 {
 public:
 #if !defined(DOXYGEN_IGNORE)

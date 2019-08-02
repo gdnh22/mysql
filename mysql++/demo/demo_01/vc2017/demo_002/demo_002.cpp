@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
 	constexpr auto server_name = "212.64.109.40";
 	constexpr auto user_name = "hiynn";
 	constexpr auto password = "1111";
-	constexpr auto sql_string_algorithm_config = "select LANE_NUMBER,LANE_NAME,DRIVING_DIRECTION_NUMBER,DIRECTION_NUMBER,ENTRANCES from TRAFFIC_LANE";
+	constexpr auto sql_string_algorithm_config = "select DEVICE_NUMBER from ALGORITHM_CONFIG";
 	if (conn.connect(db_name, server_name, user_name, password))
 	{
 		std::cout << "connection succuss." << std::endl;
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
 			{
 				int iIndex = 0;
 				mysqlpp::Row row = *it;
-				std::cout << '\t' << row[iIndex++];
+				//std::cout << '\t' << row[iIndex++];
 				std::string strUTF8_NAME = row[iIndex++].c_str();
 
 				std::wstring_convert<std::codecvt_utf8<wchar_t>> utf8_unicode;	//utf8 -> unicode
@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
 
 				//utf8 -> unicode
 				std::cout << '\t' << strGB2312_NAME.c_str();
-				std::cout << '\t' << row[iIndex++] << std::endl;
+				//std::cout << '\t' << row[iIndex++] << std::endl;
 			}
 		}
 		else {
